@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+import os
+import django_heroku
+import dj_database_url
 
 from pathlib import Path
 
@@ -31,6 +34,7 @@ ALLOWED_HOSTS = ['localhost', 'employee-register-app.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +50,8 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MIDDLEWARE = [
+     'corsheaders.middleware.CorsMiddleware',
+       'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -73,6 +79,11 @@ TEMPLATES = [
     },
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True # add this
+
+db_from_env = dj_database_url.config(conn_max_age=600) # add this
+DATABASES['default'].update(db_from_env) # add this
+
 WSGI_APPLICATION = 'employee_project.wsgi.application'
 
 
@@ -81,11 +92,12 @@ WSGI_APPLICATION = 'employee_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'EmployeeDB',
-        'USER': 'admin',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd3fucc3j6uhm1k',
+        'USER': 'fdhjftmutsdivx',
+        'PASSWORD': 'a6a572ecf5484b700c1200e42dd00d881e34a5da588e31595d4af4acef68da85',
+        'HOST': 'ec2-3-233-174-23.compute-1.amazonaws.com',
+        'PORT': '5432'
     }
 }
 
@@ -124,7 +136,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
