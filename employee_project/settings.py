@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-sxvjw&11nhz%lsrgarhq)+d9ku_i31mwyscbe*tib$u#u@ln-k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'employeeregisterapp1-77e468191e03.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'employeeregisterapp1.herokuapp.com']
 
 
 # Application definition
@@ -87,16 +87,29 @@ WSGI_APPLICATION = 'employee_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'dpr5t18i36543',
+#         'USER': 'cvuutkbyrfbaaz',
+#         'PASSWORD': 'd19e966649f57bfe3ea0e4be634b0778f3d24a28db6bc11df6e636e807a12578',
+#         'HOST': 'ec2-3-234-204-26.compute-1.amazonaws.com',
+#         'PORT': '5432'
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dpr5t18i36543',
-        'USER': 'cvuutkbyrfbaaz',
-        'PASSWORD': 'd19e966649f57bfe3ea0e4be634b0778f3d24a28db6bc11df6e636e807a12578',
-        'HOST': 'ec2-3-234-204-26.compute-1.amazonaws.com',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'employee_register',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': 'localhost'
     }
 }
+
+db_from_env = dj_database_url.config(conn_max_age=600) # add this
+DATABASES['default'].update(db_from_env) # add this
 
 
 # Password validation
