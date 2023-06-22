@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-sxvjw&11nhz%lsrgarhq)+d9ku_i31mwyscbe*tib$u#u@ln-k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'employeeregisterapp1-77e468191e03.herokuapp.com/.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'employeeregisterapp1-77e468191e03.herokuapp.com']
 
 
 # Application definition
@@ -90,10 +90,10 @@ WSGI_APPLICATION = 'employee_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd6luj05pu2ed14',
-        'USER': 'ryffymrxspxxdd',
-        'PASSWORD': 'f144ab1f43143dec5a9dc16a5a0270d1e938d46df14b7576c59a4ddfe4b78bab',
-        'HOST': 'ec2-18-204-162-101.compute-1.amazonaws.com',
+        'NAME': 'dpr5t18i36543',
+        'USER': 'cvuutkbyrfbaaz',
+        'PASSWORD': 'd19e966649f57bfe3ea0e4be634b0778f3d24a28db6bc11df6e636e807a12578',
+        'HOST': 'ec2-3-234-204-26.compute-1.amazonaws.com',
         'PORT': '5432'
     }
 }
